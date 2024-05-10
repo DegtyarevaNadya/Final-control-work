@@ -9,8 +9,7 @@ namespace MainHW
             int change = 0;
             Console.WriteLine("Если вы хотите использовать ваш массив, введите 1. Использовать массив по умолчанию - 2: ");
             change = Convert.ToInt32(Console.ReadLine());
-            Console.Write($"Вы ввели {change}");
-
+   
             string[] example = new string[6] { "123", "4563", "example", "array", "what", "43" };
             string[] array = example;
 
@@ -22,13 +21,15 @@ namespace MainHW
                     break;
                 case 2:
                     Console.WriteLine("Вы решили использовать массив по умолчанию");
+                    PrintArrayStrings(array);
                     break;
                 default:
                     Console.WriteLine("Не понял вас");
                     break;
             }
-            CheckArrayStrings(array);
-            PrintArrayStrings(array);
+            string[] newArray = new string[CheckArrayStrings(array)];
+            CreateArrayStrings(array, newArray);
+            PrintArrayStrings(newArray);
             Console.ReadKey();
         }
         static string[] InputArrayStrings(int arraySize)
@@ -51,7 +52,7 @@ namespace MainHW
 
         }
 
-        static void CheckArrayStrings(string[] array)
+        static int CheckArrayStrings(string[] array)
         {
             int count = 0;
             for (int i = 0; i < array.Length; i++)
@@ -59,7 +60,23 @@ namespace MainHW
                 if (array[i].Length <= 3) count++;
             }
 
-            Console.WriteLine($"Всего {count} таких строк");
+            Console.WriteLine($"Всего строки из 3 и менее символов: {count}");
+            return count;
+        }
+
+        static void CreateArrayStrings(string[] array, string[] NewArray)
+        {
+            int count = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i].Length <= 3)
+                {
+                    NewArray[count] = array[i];
+                    count++;
+                }
+                
+            }
+
         }
 
     }
