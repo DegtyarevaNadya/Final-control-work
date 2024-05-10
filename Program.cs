@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace MainHW
 {
@@ -27,6 +27,7 @@ namespace MainHW
                     Console.WriteLine("Не понял вас");
                     break;
             }
+            CheckArrayStrings(array);
             PrintArrayStrings(array);
             Console.ReadKey();
         }
@@ -45,9 +46,20 @@ namespace MainHW
         {
             for(int i = 0; i < array.Length;i++)
             {
-                Console.Write($"{array[i]}, ");
+                Console.Write($"{array[i]} ");
             }
 
+        }
+
+        static void CheckArrayStrings(string[] array)
+        {
+            int count = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i].Length <= 3) count++;
+            }
+
+            Console.WriteLine($"Всего {count} таких строк");
         }
 
     }
