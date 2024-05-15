@@ -24,7 +24,7 @@ namespace MainHW
                     PrintArrayStrings(array);
                     break;
                 default:
-                    Console.WriteLine("Не понял вас");
+                    Console.WriteLine("Не понял вас"); //можно попробовать зациклить через while
                     break;
             }
             string[] newArray = new string[CheckArrayStrings(array)];
